@@ -1,25 +1,56 @@
-# Identity & Access Management Labs (AZ-500)
+# Cloud & AI Security Labs
 
-## Lab 1: Entra ID Users, Groups, and RBAC
+Hands-on cloud security labs focused on Microsoft Azure, Microsoft Entra ID,
+Microsoft Defender for Cloud, Microsoft 365, hybrid environments, and AI workload security.
 
-### Objective
-Configure Azure identity and access controls using Microsoft Entra ID and Role-Based Access Control (RBAC).
+This repository documents my practical learning and security engineering labs
+while preparing for the Microsoft SC-500: Cloud and AI Security Engineer Associate
+certification and transitioning into a Cloud Security Engineering role.
 
-### Services Used
-- Microsoft Entra ID
-- Azure RBAC
-- Azure Resource Groups
+## Current Certification Focus
 
-### Steps Performed
-1. Created test users in Entra ID
-2. Created security groups and assigned users
-3. Created a resource group for testing
-4. Assigned RBAC roles at the resource group level
-5. Validated access permissions
+**Microsoft SC-500 – Cloud and AI Security Engineer Associate**
 
-### Security Rationale
-RBAC enforces least-privilege access by ensuring users only have permissions required for their role.
+Primary areas of focus include:
 
-### Lessons Learned
-- Role scope selection is critical to avoid over-permissioning
-- Group-based RBAC scales better than individual assignments
+- Microsoft Entra ID and identity security
+- Azure role-based access control (RBAC)
+- Microsoft Defender for Cloud
+- Network and infrastructure security
+- Data protection
+- Application and workload security
+- Hybrid and multi-cloud security
+- AI workload security
+- Security posture management
+- Governance and compliance
+
+## Labs
+### Identity & Access Security
+- Azure RBAC configuration
+- Custom role assignments
+- Privileged access concepts
+- Microsoft Entra security controls
+
+### Cloud Infrastructure Security
+- Network Security Groups
+- Azure Firewall
+- Private endpoints
+- Secure virtual networking
+
+### Defender for Cloud
+- Security posture management
+- Defender plans
+- Security recommendations
+- Regulatory compliance
+
+### AI Security
+- Securing AI workloads
+- Identity controls for AI resources
+- Defender for Cloud protections
+- Data and application security
+
+## 📚 Certification Journey
+
+Microsoft AZ-900 – Azure Fundamentals  
+Microsoft SC-500 – Cloud and AI Security Engineer Associate  
+Goal – Cloud Security Engineer
