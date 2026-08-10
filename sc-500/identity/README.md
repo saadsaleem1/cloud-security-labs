@@ -1,56 +1,45 @@
-# Cloud & AI Security Labs
+# SC-500 Identity & Access Security Labs
 
-Hands-on cloud security labs focused on Microsoft Azure, Microsoft Entra ID,
-Microsoft Defender for Cloud, Microsoft 365, hybrid environments, and AI workload security.
+Hands-on identity and access security labs completed as part of my preparation for the Microsoft SC-500: Cloud and AI Security Engineer Associate certification.
 
-This repository documents my practical learning and security engineering labs
-while preparing for the Microsoft SC-500: Cloud and AI Security Engineer Associate
-certification and transitioning into a Cloud Security Engineering role.
+These labs demonstrate practical experience implementing identity security controls using Microsoft Entra ID and Microsoft Azure.
 
-## Current Certification Focus
+## Topics Covered
 
-**Microsoft SC-500 – Cloud and AI Security Engineer Associate**
-
-Primary areas of focus include:
-
-- Microsoft Entra ID and identity security
-- Azure role-based access control (RBAC)
-- Microsoft Defender for Cloud
-- Network and infrastructure security
-- Data protection
-- Application and workload security
-- Hybrid and multi-cloud security
-- AI workload security
-- Security posture management
-- Governance and compliance
+- Microsoft Entra ID
+- Azure Role-Based Access Control (RBAC)
+- Least Privilege Access
+- Conditional Access
+- Privileged Identity Management (PIM)
+- Managed Identities
+- Identity Protection
+- Authentication and Authorization
 
 ## Labs
-### Identity & Access Security
-- Azure RBAC configuration
-- Custom role assignments
-- Privileged access concepts
-- Microsoft Entra security controls
 
-### Cloud Infrastructure Security
-- Network Security Groups
-- Azure Firewall
-- Private endpoints
-- Secure virtual networking
+### Lab 01 – Azure RBAC & Least Privilege
 
-### Defender for Cloud
-- Security posture management
-- Defender plans
-- Security recommendations
-- Regulatory compliance
+Configure Azure Role-Based Access Control (RBAC) to provide users with only the permissions required to perform their responsibilities.
 
-### AI Security
-- Securing AI workloads
-- Identity controls for AI resources
-- Defender for Cloud protections
-- Data and application security
+**Security Concepts:**
+- Role assignments
+- Security principals
+- Azure scopes
+- Least privilege
+- Access validation
 
-## 📚 Certification Journey
+### Lab 02 – Microsoft Entra Conditional Access
 
-Microsoft AZ-900 – Azure Fundamentals  
-Microsoft SC-500 – Cloud and AI Security Engineer Associate  
-Goal – Cloud Security Engineer
+Configure Conditional Access policies to protect access to cloud resources based on identity, device, location, and risk.
+
+### Lab 03 – Privileged Identity Management (PIM)
+
+Implement just-in-time privileged access and reduce persistent administrative privileges using Microsoft Entra PIM.
+
+### Lab 04 – Microsoft Entra ID Protection
+
+Identify, investigate, and respond to identity-based security risks.
+
+---
+
+More SC-500 identity and access security labs will be added as I progress through the certification.
