@@ -118,16 +118,37 @@ Deploying new policies in **Report-only** mode provides a safer implementation a
 
 ## Evidence
 
-Screenshots in this lab document:
+### 1. Conditional Access User Assignment
 
-1. Conditional Access policy configuration
-2. Administrative user assignment
-3. Target resource configuration
-4. MFA grant control
-5. Policy creation in Report-only mode
-6. What If policy evaluation
-7. Final Conditional Access policy details
+The Conditional Access policy was scoped to the dedicated **SC500 Lab Admin** account.
 
-## Skills Demonstrated
+![Conditional Access User Assignment](01-ca-user-assignment.png)
 
-`Microsoft Entra ID` `Conditional Access` `MFA` `IAM` `Zero Trust` `Identity Security` `Microsoft Azure` `SC-500`
+### 2. MFA Grant Control
+
+The policy was configured to require **multifactor authentication (MFA)** as the access control.
+
+![MFA Grant Control](02-ca-mfa-grant-control.png)
+
+### 3. Conditional Access Policy Created
+
+The `CA-Lab02-Require-MFA-Admins` policy was successfully created and deployed in **Report-only** mode.
+
+![Conditional Access Policy Created](03-ca-policy-created.png)
+
+### 4. What If Validation
+
+Microsoft Entra's **What If** tool confirmed that the Conditional Access policy would apply to the simulated sign-in and require MFA.
+
+![Conditional Access What If Validation](04-ca-what-if-validation.png)
+
+### 5. Final Policy Configuration
+
+The final policy configuration confirms:
+
+- Target: SC500 Lab Admin
+- Resources: All resources
+- Access requirement: Multifactor authentication
+- State: Report-only
+
+![Conditional Access Policy Details](05-ca-policy-details.png)
