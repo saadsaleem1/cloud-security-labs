@@ -4,7 +4,7 @@
 
 Configure and perform a Microsoft Entra ID Access Review to evaluate whether a user should retain membership in a security group.
 
-This lab demonstrates identity governance, access certification, automated access recommendations, reviewer-based decisions, and access lifecycle management using Microsoft Entra ID Governance.
+This lab demonstrates hands-on experience with Microsoft Entra Identity Governance, access certification, automated access recommendations, reviewer-based decisions, and identity lifecycle management.
 
 ---
 
@@ -21,129 +21,227 @@ This lab demonstrates identity governance, access certification, automated acces
 
 ## Scenario
 
-Organizations should periodically review user access to ensure that users retain only the permissions necessary to perform their responsibilities.
+Organizations should periodically review user access to ensure users retain only the permissions necessary to perform their responsibilities.
 
-For this lab, I created a dedicated security group and configured an access review to determine whether a user should continue to have access.
+For this lab, I created a dedicated Microsoft Entra security group and configured an Access Review to determine whether a user should continue to have access.
 
-The review also demonstrated how Microsoft Entra can generate automated recommendations based on identity activity while allowing a human reviewer to make the final access decision.
-
----
-
-## Step 1 – Create Security Group
-
-Created a Microsoft Entra security group:
-
-**Group Name:** `SC500-Security-Access-Review`
-
-**Group Type:** Security
-
-**Membership Type:** Assigned
-
-The SC500 Lab Admin account was added as a member of the group.
-
-This group served as the resource being evaluated during the access review.
+The lab also demonstrates how Microsoft Entra can generate automated recommendations based on identity activity while allowing a human reviewer to make the final access decision.
 
 ---
 
-## Step 2 – Configure Access Review
+# Lab Implementation
 
-Navigated to:
+## Step 1 – Create the Security Group
 
-Microsoft Entra ID → Identity Governance → Access Reviews
+I created a dedicated Microsoft Entra security group to use as the target resource for the access review.
 
-Created an access review for:
+**Configuration:**
 
-**Resource:** `SC500-Security-Access-Review`
+- Group Type: Security
+- Group Name: `SC500-Security-Access-Review`
+- Microsoft Entra roles assignable: No
+- Membership Type: Assigned
+- Member: SC500 Lab Admin
 
-Configuration included:
+The security group provides a controlled resource whose membership can be evaluated through Identity Governance.
 
-- Review type: Teams + Groups
-- Review scope: All users
+### Evidence
+
+![Security Group Created](screenshots/01-security-group-created.png)
+
+---
+
+## Step 2 – Configure the Access Review
+
+I navigated to:
+
+**Microsoft Entra ID → Identity Governance → Access Reviews**
+
+I created a new resource-based access review targeting:
+
+`SC500-Security-Access-Review`
+
+The review was configured to evaluate the users assigned to the security group.
+
+### Evidence
+
+![Access Review Configuration](screenshots/02-access-review-configuration.png)
+
+---
+
+## Step 3 – Configure Reviewer and Review Schedule
+
+The access review was configured with the following settings:
+
 - Reviewer: SC500 Lab Admin
 - Duration: 3 days
 - Recurrence: One time
+- Review scope: All users
+
+Using a designated reviewer ensures that access decisions are evaluated by an authorized identity rather than automatically granting indefinite access.
+
+### Evidence
+
+![Reviewer Configuration](screenshots/03-reviewer-configuration.png)
+
+---
+
+## Step 4 – Configure Governance and Remediation Settings
+
+Additional Identity Governance controls were enabled for the review.
+
+**Settings configured:**
+
 - Auto-apply results to resource: Enabled
 - If reviewers do not respond: Remove access
-- Inactivity decision helper: Enabled
+- No sign-in within 30 days: Enabled
 - Justification required: Enabled
 - Email notifications: Enabled
 - Reminders: Enabled
 
----
+These controls help reduce stale access and provide automated remediation when access is no longer justified.
 
-## Step 3 – Validate Access Review
+### Evidence
 
-After creating the review, I verified that the access review became active.
-
-The SC500 Lab Admin account appeared as the identity requiring review.
-
-The review was then accessed through Microsoft My Access.
+![Access Review Settings](screenshots/04-access-review-settings.png)
 
 ---
 
-## Step 4 – Review Automated Recommendation
+## Step 5 – Verify the Active Access Review
 
-Microsoft Entra evaluated the account and generated the following recommendation:
+After creating the review, I verified that the Access Review successfully initialized and became active.
 
-**Recommendation: Deny**
+The review showed one identity requiring an access certification decision.
 
-**Reason: Inactive user**
+### Evidence
 
-This demonstrated the use of identity activity signals to assist reviewers in determining whether access should continue.
+![Active Access Review](screenshots/05-access-review-active.png)
 
 ---
 
-## Step 5 – Perform Access Certification Decision
+## Step 6 – Verify Reviewer Assignment
 
-After evaluating the account's continued requirement for access, I manually selected:
+I verified that the `SC500 Lab Admin` account was configured as the primary reviewer.
+
+This account was used to perform the access certification decision.
+
+### Evidence
+
+![Reviewer Assigned](screenshots/06-reviewer-assigned.png)
+
+---
+
+## Step 7 – Access the Review Through Microsoft My Access
+
+I signed into Microsoft My Access using the SC500 Lab Admin account.
+
+The Access Review appeared under pending actions, confirming that the Identity Governance workflow successfully assigned the review to the designated reviewer.
+
+### Evidence
+
+![My Access Pending Review](screenshots/07-my-access-pending-review.png)
+
+The review appeared under **Access Reviews** with one pending access decision.
+
+![Access Review Pending](screenshots/08-access-review-pending.png)
+
+---
+
+## Step 8 – Evaluate Microsoft Entra Recommendation
+
+Microsoft Entra evaluated the identity and generated an automated recommendation:
+
+**Recommendation:** Deny
+
+**Reason:** Inactive user
+
+The inactivity signal was generated by the Access Review decision helper.
+
+This demonstrates how Microsoft Entra can use identity activity information to assist reviewers when determining whether access should continue.
+
+### Evidence
+
+![Inactive User Deny Recommendation](screenshots/09-deny-recommendation.png)
+
+---
+
+## Step 9 – Perform the Access Certification Decision
+
+Rather than automatically accepting the recommendation, I evaluated whether the identity still had a legitimate requirement for access.
+
+The account continued to require access for SC-500 security administration and Identity Governance lab activities.
+
+I therefore selected:
 
 **Decision: Approved**
 
-The automated Deny recommendation was therefore overridden by the reviewer because continued access was required for security administration and Identity Governance lab activities.
+The final result showed:
 
-This demonstrates that automated recommendations can assist access governance decisions while human reviewers retain responsibility for the final access certification decision.
+- Recommendation: Deny
+- Recommendation reason: Inactive user
+- Decision: Approved
+- Reviewed by: SC500 Lab Admin
+
+This demonstrates that automated recommendations can support access governance while an authorized reviewer retains responsibility for the final access certification decision.
+
+### Evidence
+
+![Access Review Approved](screenshots/10-access-review-approved.png)
 
 ---
 
-## Security Concepts Demonstrated
+# Security Concepts Demonstrated
 
 This lab provided hands-on experience with:
 
 - Microsoft Entra Identity Governance
 - Access Reviews
-- Access certification
-- Security group governance
-- Identity lifecycle management
-- Least privilege
-- Automated access recommendations
-- Inactivity-based access evaluation
-- Reviewer-based access decisions
-- Automated access remediation
-- Access review notifications and reminders
-- Auditability of access decisions
+- Access Certification
+- Security Group Governance
+- Identity Lifecycle Management
+- Least Privilege
+- Inactivity-Based Access Evaluation
+- Automated Access Recommendations
+- Reviewer-Based Access Decisions
+- Automated Access Remediation
+- Access Review Notifications
+- Access Review Reminders
+- Justification Requirements
+- Human Oversight of Automated Security Recommendations
+- Auditable Identity Governance Decisions
 
 ---
 
-## Security Engineering Takeaway
+# Security Engineering Takeaway
 
 Access Reviews help organizations continuously validate whether users still require access to resources.
 
-Rather than allowing permissions to remain indefinitely, organizations can periodically evaluate access based on identity activity, business requirements, and security policies.
+Without periodic access certification, permissions can remain assigned long after they are required, creating unnecessary security exposure.
 
-Microsoft Entra can provide automated recommendations based on signals such as inactivity while designated reviewers make the final decision.
+Microsoft Entra Identity Governance can evaluate signals such as account inactivity and generate recommendations to assist reviewers.
 
-This supports least privilege and reduces the risk of unnecessary or stale access remaining within an environment.
+In this lab, Microsoft Entra recommended denying access because the account was considered inactive. However, after evaluating the legitimate requirement for continued access, the reviewer approved the account.
+
+This demonstrates an important security governance principle:
+
+> Automated security recommendations should inform access decisions, while authorized reviewers evaluate business context and make the final determination.
+
+Access Reviews therefore support least privilege, identity lifecycle governance, stale-access reduction, and Zero Trust principles.
 
 ---
 
-## Evidence
+# Lab Result
 
-Screenshots included in this repository demonstrate:
+**Status: Successfully Completed**
 
-1. Creation of the security group
-2. Access review configuration
-3. Active access review
-4. Reviewer assignment
-5. Access review appearing in Microsoft My Access
-6. Microsoft Entra inactivity-based Deny recommendation
-7. Final Approved access certification decision
+The following workflow was successfully demonstrated:
+
+`Security Group → Access Review → Reviewer Assignment → Identity Evaluation → Automated Recommendation → Human Review → Access Certification Decision`
+
+The final access review decision was successfully recorded as **Approved** despite an automated **Deny** recommendation based on inactivity.
+
+---
+
+## Repository
+
+This lab is part of my hands-on SC-500 / Microsoft cloud security lab portfolio.
