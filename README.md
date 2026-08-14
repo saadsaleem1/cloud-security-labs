@@ -333,7 +333,7 @@ Demonstrated:
 
 ---
 
-# 📂 Lab Portfolio
+# Lab Portfolio
 
 ## Identity Security
 
