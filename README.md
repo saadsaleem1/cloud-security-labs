@@ -107,7 +107,7 @@ This demonstrates practical implementation of secure secrets management within A
 
 ---
 
-# 🔎 Microsoft Sentinel SIEM & Detection Engineering
+# Microsoft Sentinel SIEM & Detection Engineering
 
 Microsoft Sentinel was configured as a cloud-native SIEM to collect and analyze Azure security telemetry.
 
